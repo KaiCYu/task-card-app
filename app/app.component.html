@@ -1,0 +1,23 @@
+<!--bootstrap container brings left/right margins in to make easier to read-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6-offset-md-3">
+      <form class="form-inline" (ngSubmit)="addTask()" #taskForm="ngForm">
+        <div class="form-group">
+          <label for="content-field" class="sr-only"></label>
+          <input type="text" class="form-control" id="content-field" required placeholder="Enter a task..." [(ngModel)]="currentTask.content" name="content">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="taskForm.form.invalid"><i class="fa fa-plus" aria-hidden="true"></i>
+Add Task</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <!--using property binding (can be done on any html element to set a prop)-->
+    
+    <!--[task]="task": "task" is from the local variable made by the ngFor
+                        [task] is the property binding -->
+    <app-card *ngFor="let task of tasks" [task]="task"></app-card>
+
+  </div>
+</div>

@@ -9,14 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var task_1 = require('./model/task');
 var AppComponent = (function () {
     function AppComponent() {
+        //use private, so anything outside this component cannot modify the values
+        this.tasks = [
+            new task_1.Task("Clean the house", false),
+            new task_1.Task("Do the dishes", false)
+        ];
+        //initialize a current task
+        this.currentTask = new task_1.Task(null, false);
     }
+    //str? is optional
+    AppComponent.prototype.addTask = function (num, str) {
+        var task = new task_1.Task(this.currentTask.content, this.currentTask.complete);
+        this.tasks.push(task);
+        //to clear the form, since it has 2 way data binding, we can just set the content to null
+        this.currentTask.content = null;
+    };
     AppComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'my-app',
             //for the HTML 
-            template: '<h1>Skeleton Project</h1>'
+            templateUrl: 'app.component.html',
+            styleUrls: ['app.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

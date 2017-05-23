@@ -9,16 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var task_1 = require('../model/task');
 var CardComponent = (function () {
     function CardComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', task_1.Task)
+    ], CardComponent.prototype, "task", void 0);
     CardComponent = __decorate([
         core_1.Component({
             //using commonJS, helps with relative path of files
             moduleId: module.id,
             selector: 'app-card',
             // any templates with more than 3 lines, separate into another template file
+            //angular by default, finds file from project directory, NOT current file
             templateUrl: 'card.component.html',
+            //styles component needs to be an array, b/c you can have multiple sheets per component
             styleUrls: ['card.component.css']
         }), 
         __metadata('design:paramtypes', [])
